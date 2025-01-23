@@ -11,11 +11,11 @@ apt-get install -y default-jdk
 adduser i2p
 usermod -aG sudo i2p
 
-runuser -u i2p mkdir /home/i2p/i2p
-runuser -u i2p cd /home/i2p/i2p/
+su - i2p -c "mkdir /home/i2p/i2p"
+cd /home/i2p/i2p/
 
-runuser -u i2p wget http://i2pplus.github.io/installers/i2pinstall_2.7.0+.exe
-runuser -u i2p java -jar i2pinstall_2.7.0+.exe -console
+wget http://i2pplus.github.io/installers/i2pinstall_2.7.0+.exe
+java -jar i2pinstall_2.7.0+.exe -console
 
 apt-get -y autoremove
 apt-get -y autoclean
