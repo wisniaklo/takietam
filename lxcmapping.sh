@@ -26,7 +26,7 @@ EOF
 # Sprawdzenie, czy podano argument
 if [ -z "$1" ]; then
   # Prośba o podanie nazwy pliku
-  read -p "Podaj nazwę pliku do edycji: " nazwa_pliku
+  read -p "Podaj nazwę pliku konfiguracyjnego kontenera LXC (np 101.conf): " nazwa_pliku
   if [ -z "$nazwa_pliku" ]; then
     echo "Nie podano nazwy pliku."
     exit 1
