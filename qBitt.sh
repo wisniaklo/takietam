@@ -16,15 +16,12 @@ add-apt-repository ppa:qbittorrent-team/qbittorrent-stable
 apt-get update
 apt-get install -y qbittorrent-nox
 
-su - nas 
-qbittorrent-nox
+runuser -u nas qbittorrent-nox
 
-cat <<EOF >/home/nas/.config/qBittorrent/qBittorrent.conf
+runuser -u nas cat <<EOF >/home/nas/.config/qBittorrent/qBittorrent.conf
 [Preferences]
 WebUI\Password_PBKDF2="@ByteArray(vwm+l7qfq+4W/6pmC8JRDg==:KFvmdrcjlqXS7wkfqHRTv6y/D36V+OCrr/FSfeo0ISNEPD1uWsV9+pGyqAPkRadI2IEnnFOmYZ7uWOvi8QPRcg==)"
 EOF
-
-su - root 
 
 systemctl start qbittorrent-nox@nas
 systemctl enable qbittorrent-nox@nas
