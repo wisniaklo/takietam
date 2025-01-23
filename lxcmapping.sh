@@ -36,7 +36,7 @@ if [ ! -f "$sciezka_pliku_lxc" ]; then
 fi
 
 # Dodawanie wierszy do pliku konfiguracyjnego LXC (wiersz po wierszu)
-dodaj_wiersze "$sciezka_pliku_lxc" \
+dodaj_wiersze "$sciezka_pliku_lxc" 
 "################### MAP UID i GID ###################" \
 "# uid map: from uid 0 map 1000 uids (in the ct) to the range starting 100000 (on the host), so 0..999 (ct) → 100000..100999 (host)" \
 "lxc.idmap: u 0 100000 1000" \
