@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Funkcja do dodawania wierszy
+# Funkcja do dodawania wierszy (z kontrolą duplikatów)
 dodaj_wiersze() {
   local sciezka_pliku="$1"
   local dodawane_wiersze=$(cat << EOF
@@ -15,12 +15,19 @@ lxc.idmap: g 1000 1000 1
 lxc.idmap: u 1001 101001 64535
 lxc.idmap: g 1001 101001 64535
 # mount points
-mp0: /mnt/pve/torrent,mp=/mnt/download
+mp0: /ZF1/Home,mp=/mnt/home
+mp1: /ZF1/Data,mp=/mnt/data
 ######################################################################
 EOF
 )
-  echo "$dodawane_wiersze" >> "$sciezka_pliku"
-  echo "Wiersze zostały dodane do pliku $sciezka_pliku."
+
+  # Sprawdzenie, czy wiersze już istnieją w pliku
+  if grep -qF "$dodawane_wiersze" "$sciezka_pliku"; then
+    echo "Wiersze już istnieją w pliku $sciezka_pliku. Nie dodaję duplikatów."
+  else
+    echo "$dodawane_wiersze" >> "$sciezka_pliku"
+    echo "Wiersze zostały dodane do pliku $sciezka_pliku."
+  fi
 }
 
 # Sprawdzenie, czy podano argument
