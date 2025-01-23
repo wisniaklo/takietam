@@ -1,22 +1,9 @@
 #!/bin/bash
 
-# Sprawdzenie, czy podano nazwę pliku jako argument
-if [ -z "$1" ]; then
-  echo "Użycie: $0 <nazwa_pliku>"
-  exit 1
-fi
-
-nazwa_pliku="$1"
-sciezka_pliku="/etc/pve/lxc/$nazwa_pliku"
-
-# Sprawdzenie, czy plik istnieje
-if [ ! -f "$sciezka_pliku" ]; then
-  echo "Plik $sciezka_pliku nie istnieje."
-  exit 1
-fi
-
-# Dodawane wiersze
-dodawane_wiersze=$(cat << EOF
+# Funkcja do dodawania wierszy
+dodaj_wiersze() {
+  local sciezka_pliku="$1"
+  local dodawane_wiersze=$(cat << EOF
 ######################################################################
 # uid map: from uid 0 map 1000 uids (in the ct) to the range starting 100000 (on the host), so 0..999 (ct) → 100000..100999 (host)
 lxc.idmap: u 0 100000 1000
@@ -33,10 +20,31 @@ mp1: /ZF1/Data,mp=/mnt/data
 ######################################################################
 EOF
 )
+  echo "$dodawane_wiersze" >> "$sciezka_pliku"
+  echo "Wiersze zostały dodane do pliku $sciezka_pliku."
+}
 
-# Dodanie wierszy do pliku
-echo "$dodawane_wiersze" >> "$sciezka_pliku"
+# Sprawdzenie, czy podano argument
+if [ -z "$1" ]; then
+  # Prośba o podanie nazwy pliku
+  read -p "Podaj nazwę pliku do edycji: " nazwa_pliku
+  if [ -z "$nazwa_pliku" ]; then
+    echo "Nie podano nazwy pliku."
+    exit 1
+  fi
+else
+  nazwa_pliku="$1"
+fi
 
-echo "Wiersze zostały dodane do pliku $sciezka_pliku."
+sciezka_pliku="/etc/pve/lxc/$nazwa_pliku"
+
+# Sprawdzenie, czy plik istnieje
+if [ ! -f "$sciezka_pliku" ]; then
+  echo "Plik $sciezka_pliku nie istnieje."
+  exit 1
+fi
+
+# Wywołanie funkcji dodającej wiersze
+dodaj_wiersze "$sciezka_pliku"
 
 exit 0
