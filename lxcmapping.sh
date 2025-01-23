@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Funkcja do dodawania wierszy
 dodaj_wiersze() {
