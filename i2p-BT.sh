@@ -20,6 +20,7 @@ sudo -u i2p sh -c "cd /home/i2p/i2p && java -jar i2pinstall_2.7.0+.exe -console"
 sudo -u i2p sed -i 's|^#RUN_AS_USER=.*|RUN_AS_USER="i2p"|' /home/i2p/i2p/i2prouter
 
 sudo -u i2p /home/i2p/i2p/i2prouter install
+sudo -u i2p /home/i2p/i2p/i2prouter start
 
 apt-get -y autoremove
 apt-get -y autoclean
