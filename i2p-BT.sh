@@ -14,7 +14,7 @@ usermod -aG sudo i2p
 mkdir -p /home/i2p/i2p
 chown i2p:i2p /home/i2p/i2
 
-su - i2p -c "cd /home/i2p/i2p && wget http://i2pplus.github.io/installers/i2pinstall_2.7.0+.exe"
+su - i2p -c "wget -P /home/i2p/i2p http://i2pplus.github.io/installers/i2pinstall_2.7.0+.exe"
 su - i2p -c "cd /home/i2p/i2p && java -jar i2pinstall_2.7.0+.exe -console"
 
 apt-get -y autoremove
