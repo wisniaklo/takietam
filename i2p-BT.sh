@@ -6,7 +6,7 @@ apt-get -y upgrade
 adduser i2p
 usermod -aG sudo i2p
 
-su i2p
+su - i2p
 mkdir /home/i2p/i2p
 cd /home/i2p/i2p/
 
