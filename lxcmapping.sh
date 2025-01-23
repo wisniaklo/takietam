@@ -15,8 +15,7 @@ lxc.idmap: g 1000 1000 1
 lxc.idmap: u 1001 101001 64535
 lxc.idmap: g 1001 101001 64535
 # mount points
-mp0: /ZF1/Home,mp=/mnt/home
-mp1: /ZF1/Data,mp=/mnt/data
+mp0: /mnt/pve/torrent,mp=/mnt/download
 ######################################################################
 EOF
 )
