@@ -28,7 +28,7 @@ sudo -u i2p /home/i2p/i2p/i2prouter start
 
 sudo -u i2p qbittorrent-nox
 
-sudo -u i2p cat <<EOF >/home/nas/.config/qBittorrent/qBittorrent.conf
+sudo -u i2p cat <<EOF >/home/i2p/.config/qBittorrent/qBittorrent.conf
 [Preferences]
 WebUI\Password_PBKDF2="@ByteArray(vwm+l7qfq+4W/6pmC8JRDg==:KFvmdrcjlqXS7wkfqHRTv6y/D36V+OCrr/FSfeo0ISNEPD1uWsV9+pGyqAPkRadI2IEnnFOmYZ7uWOvi8QPRcg==)"
 EOF
