@@ -16,14 +16,11 @@ chown i2p:i2p /home/i2p/i2p
 
 su - i2p -c "wget -P /home/i2p/i2p http://i2pplus.github.io/installers/i2pinstall_2.7.0+.exe"
 su - i2p -c "cd /home/i2p/i2p && java -jar i2pinstall_2.7.0+.exe -console"
-FILE="/home/i2p/i2p/i2prouter"
-USER="i2p"
 
-if sudo -u "$USER" grep -q "^RUN_AS_USER=" "$FILE"; then
-  sudo -u "$USER" sed -i '/^RUN_AS_USER=/d' "$FILE"
+if sudo -u i2p grep -q "^#RUN_AS_USER=" /home/i2p/i2p/i2prouter; then
+  sudo -u i2p sed -i '/^#RUN_AS_USER=/d' /home/i2p/i2p/i2prouter
 fi
-sudo -u "$USER" sh -c "echo 'RUN_AS_USER=\"i2p\"' >> \"$FILE\""
-
+sudo -u i2p echo "RUN_AS_USER=\"i2p\"" >> /home/i2p/i2p/i2prouter
 
 apt-get -y autoremove
 apt-get -y autoclean
