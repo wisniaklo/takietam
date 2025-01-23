@@ -17,7 +17,7 @@ chown i2p:i2p /home/i2p/i2p
 su - i2p -c "wget -P /home/i2p/i2p http://i2pplus.github.io/installers/i2pinstall_2.7.0+.exe"
 su - i2p -c "cd /home/i2p/i2p && java -jar i2pinstall_2.7.0+.exe -console"
 
-sudo -u i2p sed -i '\|^#RUN_AS_USER=.*|c\RUN_AS_USER="i2p"' /home/i2p/i2p/i2prouter
+sudo -u i2p sed -i 's|^#RUN_AS_USER=.*|RUN_AS_USER="i2p"|' /home/i2p/i2p/i2prouter
 
 apt-get -y autoremove
 apt-get -y autoclean
