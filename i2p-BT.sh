@@ -1,30 +1,23 @@
 #!/usr/bin/env bash
 
-apt-get update && apt-get -y upgrade
+apt-get update
+apt-get -y upgrade
 
-useradd -m -p "" nas
-usermod -s /usr/sbin/nologin nas 
-usermod -s /bin/bash nas
+adduser i2p
+usermod -aG sudo i2p
+
+su i2p
+mkdir /home/i2p/i2p
+cd /home/i2p/i2p/
 
 apt-get install -y curl
 apt-get install -y sudo
 apt-get install -y mc
 apt-get install -y wget
-apt-get install -y software-properties-common
+apt-get install -y default-jdk
 
-add-apt-repository ppa:qbittorrent-team/qbittorrent-stable
-apt-get update
-apt-get install -y qbittorrent-nox
-
-runuser -u nas qbittorrent-nox
-
-runuser -u nas cat <<EOF >/home/nas/.config/qBittorrent/qBittorrent.conf
-[Preferences]
-WebUI\Password_PBKDF2="@ByteArray(vwm+l7qfq+4W/6pmC8JRDg==:KFvmdrcjlqXS7wkfqHRTv6y/D36V+OCrr/FSfeo0ISNEPD1uWsV9+pGyqAPkRadI2IEnnFOmYZ7uWOvi8QPRcg==)"
-EOF
-
-systemctl start qbittorrent-nox@nas
-systemctl enable qbittorrent-nox@nas
+wget http://i2pplus.github.io/installers/i2pinstall_2.7.0+.exe
+java -jar i2pinstall_2.7.0+.exe -console
 
 apt-get -y autoremove
 apt-get -y autoclean
