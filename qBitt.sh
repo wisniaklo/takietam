@@ -16,7 +16,8 @@ add-apt-repository ppa:qbittorrent-team/qbittorrent-stable
 apt-get update
 apt-get install -y qbittorrent-nox
 
-su - nas -c "qbittorrent-nox" -y
+su - nas 
+qbittorrent-nox
 
 cat <<EOF >/home/nas/.config/qBittorrent/qBittorrent.conf
 [Preferences]
