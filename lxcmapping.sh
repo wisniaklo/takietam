@@ -37,10 +37,7 @@ fi
 
 # Dodawanie wierszy do pliku konfiguracyjnego LXC (wiersz po wierszu)
 dodaj_wiersze "$sciezka_pliku_lxc" \
-"#####################################################" \
-"###                 MAP UID i GID                 ###" \
-"#####################################################" \
-"" \
+"################### MAP UID i GID ###################" \
 "# uid map: from uid 0 map 1000 uids (in the ct) to the range starting 100000 (on the host), so 0..999 (ct) → 100000..100999 (host)" \
 "lxc.idmap: u 0 100000 1000" \
 "lxc.idmap: g 0 100000 1000" \
@@ -50,13 +47,8 @@ dodaj_wiersze "$sciezka_pliku_lxc" \
 "# we map the rest of 65535 from 1001 upto 101001, so 1001..65535 → 101001..165535" \
 "lxc.idmap: u 1001 101001 64535" \
 "lxc.idmap: g 1001 101001 64535" \
-"" \
-"#####################################################" \
-"###               MOUNT POINTS                    ###" \
-"#####################################################" \
-"" \
-"mp0: /mnt/pve/torrent,mp=/mnt/download" \
-"#####################################################"
+"################# MOUNT POINTS ######################" \
+"mp0: /mnt/pve/torrent,mp=/mnt/download"
 
 # Dodawanie wiersza do /etc/subuid i /etc/subgid
 dodaj_wiersze "/etc/subuid" "root:1000:1"
