@@ -10,7 +10,7 @@ apt-get install -y wget
 
 adduser nas
 usermod -aG sudo nas
-sudo -u nas apt-get install -y biglybt
+#sudo -u nas apt-get install -y biglybt
 
 apt-get -y autoremove
 apt-get -y autoclean
