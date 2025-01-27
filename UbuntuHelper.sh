@@ -10,6 +10,7 @@ echo "1. Post install- zainstalowanie potrzebnych pakietów"
 echo "2. Instalacja Desktop GUI"
 echo "3. Odinstaluj Desktop GUI"
 echo "4. Install BiglyBT"
+echo "4. Install Desktop"
 echo "5. Anuluj"
 
 # Odczytanie wyboru użytkownika
@@ -17,7 +18,7 @@ read -p "Twój wybór: " wybor
 
 
 # Sprawdzenie poprawności wyboru
-while [[ "$wybor" != "1" && "$wybor" != "2" && "$wybor" != "3" && "$wybor" != "4" && "$wybor" != "5" ]]; do
+while [[ "$wybor" != "1" && "$wybor" != "2" && "$wybor" != "3" && "$wybor" != "4" && "$wybor" != "5" && "$wybor" != "6" ]]; do
   echo "Niepoprawny wybór. Wybierz liczbę od 1 do 4."
   read -p "Twój wybór: " wybor
 done
@@ -69,6 +70,21 @@ case $wybor in
       rm BiglyBT_Installer.sh
     ;;
   5)
+    echo "Wybrano opcję trzecią"
+    # Tutaj umieść komendy dla opcji trzeciej
+      apt-get install -y icewm
+      apt-get install -y firefox pcmandfm
+      apt-get install -y nitrogen
+      apt-get install -y ubuntu-wallpapers-jammy
+      apt-get install -y xterm
+      apt-get install -y lxterminal
+      apt-get install -y xinit
+      startx
+      apt-get clean -y
+      apt-get autoclean -y
+      apt-get autoremove --purge -y
+    ;;
+  6)
     echo "Wybrano opcję czwartą"
     # Tutaj umieść komendy dla opcji czwartej
       exit
