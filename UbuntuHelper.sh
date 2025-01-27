@@ -16,7 +16,7 @@ echo "5. Anuluj"
 read -p "Twój wybór: " wybor
 
 # Sprawdzenie poprawności wyboru
-while [[ "$wybor" != "1" && "$wybor" != "2" && "$wybor" != "3" && "$wybor" != "4" && "$wybor" != "5"]]; do
+while [[ "$wybor" != "1" && "$wybor" != "2" && "$wybor" != "3" && "$wybor" != "4" && "$wybor" != "5" ]]; do
   echo "Niepoprawny wybór. Wybierz liczbę od 1 do 5."
   read -p "Twój wybór: " wybor
 done
