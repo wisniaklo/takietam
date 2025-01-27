@@ -70,6 +70,8 @@ case $wybor in
       chmod +x BiglyBT_Installer.sh
       ./BiglyBT_Installer.sh
       rm BiglyBT_Installer.sh
+
+      /etc/systemd/system/nazwa_serwisu.service
     ;;
   5)
     echo "Wybrano opcję trzecią"
