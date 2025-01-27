@@ -44,7 +44,7 @@ case $wybor in
       apt-get update
       apt-get -y upgrade
       apt-get install -y slim
-      apt-get install -y ubuntu-desktop
+      apt-get install -y lxde
       reboot
     ;;
   3)
@@ -52,7 +52,7 @@ case $wybor in
     # Tutaj umieść komendy dla opcji trzeciej
       apt-get update
       apt-get -y upgrade
-      apt-get remove slim ubuntu-desktop
+      apt-get remove slim lxde
       apt-get clean -y
       apt-get autoclean -y
       apt-get autoremove --purge -y
