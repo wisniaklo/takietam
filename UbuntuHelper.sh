@@ -10,16 +10,16 @@ echo "1. Post install- zainstalowanie potrzebnych pakietów"
 echo "2. Instalacja Desktop GUI"
 echo "3. Odinstaluj Desktop GUI"
 echo "4. Install BiglyBT"
-echo "4. Install Desktop"
-echo "5. Anuluj"
+echo "5. Install Desktop"
+echo "exit"
 
 # Odczytanie wyboru użytkownika
 read -p "Twój wybór: " wybor
 
 
 # Sprawdzenie poprawności wyboru
-while [[ "$wybor" != "1" && "$wybor" != "2" && "$wybor" != "3" && "$wybor" != "4" && "$wybor" != "5" && "$wybor" != "6" ]]; do
-  echo "Niepoprawny wybór. Wybierz liczbę od 1 do 4."
+while [[ "$wybor" != "1" && "$wybor" != "2" && "$wybor" != "3" && "$wybor" != "4" && "$wybor" != "5" && "$wybor" != "exit" ]]; do
+  echo "Niepoprawny wybór. Wybierz liczbę od 1 do 5 lub exit."
   read -p "Twój wybór: " wybor
 done
 
