@@ -11,3 +11,4 @@ apt-get install -y nano
 apt-get clean -y
 apt-get autoclean -y
 apt-get autoremove --purge -y
+fstrim -av
