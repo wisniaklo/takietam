@@ -53,9 +53,7 @@ case "$wybor" in
         apt-get -y install default-jre
         wget https://files.biglybt.com/installer/BiglyBT_Installer.sh
         chmod +x BiglyBT_Installer.sh
-        sudo 
-        apt-get install -y biglybt
-
+        sudo -u nas ./BiglyBT_Installer.sh
         cat << EOF > /etc/systemd/system/biglybt.service
 [Unit]
 Description=BiglyBT service
