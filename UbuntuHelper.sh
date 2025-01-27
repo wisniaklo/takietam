@@ -48,6 +48,7 @@ case $wybor in
       apt-get -y upgrade
       #apt-get install -y slim
       apt-get install lxqt
+      apt-get install sddm
       #apt-get install -y task-lxqt-desktop
       reboot
     ;;
