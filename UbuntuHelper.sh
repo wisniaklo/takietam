@@ -66,12 +66,25 @@ case $wybor in
   4)
     echo "Wybrano opcję trzecią"
     # Tutaj umieść komendy dla opcji trzeciej
-      wget https://files.biglybt.com/installer/BiglyBT_Installer.sh
-      chmod +x BiglyBT_Installer.sh
-      ./BiglyBT_Installer.sh
-      rm BiglyBT_Installer.sh
-
-      /etc/systemd/system/nazwa_serwisu.service
+      #wget https://files.biglybt.com/installer/BiglyBT_Installer.sh
+      #chmod +x BiglyBT_Installer.sh
+      #./BiglyBT_Installer.sh
+      #rm BiglyBT_Installer.sh
+      apt-get install -y default-jre
+      sudo -u nas apt-get install -y biglybt
+      cat << EOF > /etc/systemd/system/biglybt.service
+      [Unit]
+      Description=Opis serwisu
+      After=network.target
+      
+      [Service]
+      Type=simple
+      ExecStart=/home/nas/biglybt/biglybt
+      Restart=always
+      
+      [Install]
+      WantedBy=multi-user.target
+      EOF
     ;;
   5)
     echo "Wybrano opcję trzecią"
