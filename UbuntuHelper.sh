@@ -9,14 +9,15 @@ echo "Wybierz jedną z opcji:"
 echo "1. Post install- zainstalowanie potrzebnych pakietów"
 echo "2. Instalacja Desktop GUI"
 echo "3. Odinstaluj Desktop GUI"
-echo "4. Anuluj"
+echo "4. Install BiglyBT"
+echo "5. Anuluj"
 
 # Odczytanie wyboru użytkownika
 read -p "Twój wybór: " wybor
 
 # Sprawdzenie poprawności wyboru
-while [[ "$wybor" != "1" && "$wybor" != "2" && "$wybor" != "3" && "$wybor" != "4" ]]; do
-  echo "Niepoprawny wybór. Wybierz liczbę od 1 do 4."
+while [[ "$wybor" != "1" && "$wybor" != "2" && "$wybor" != "3" && "$wybor" != "4" && "$wybor" != "5"]]; do
+  echo "Niepoprawny wybór. Wybierz liczbę od 1 do 5."
   read -p "Twój wybór: " wybor
 done
 
@@ -59,6 +60,13 @@ case $wybor in
       reboot
     ;;
   4)
+    echo "Wybrano opcję trzecią"
+    # Tutaj umieść komendy dla opcji trzeciej
+      wget https://files.biglybt.com/installer/BiglyBT_Installer.sh
+      chmod +x BiglyBT_Installer.sh
+      rm BiglyBT_Installer.sh
+    ;;
+  5)
     echo "Wybrano opcję czwartą"
     # Tutaj umieść komendy dla opcji czwartej
       exit
