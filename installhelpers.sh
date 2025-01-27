@@ -51,6 +51,9 @@ case "$wybor" in
         echo "Wybrano opcję czwartą (Instalacja BiglyBT)"
         apt-get update
         apt-get -y install default-jre
+        wget https://files.biglybt.com/installer/BiglyBT_Installer.sh
+        chmod +x BiglyBT_Installer.sh
+        sudo 
         apt-get install -y biglybt
 
         cat << EOF > /etc/systemd/system/biglybt.service
