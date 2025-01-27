@@ -46,7 +46,7 @@ case $wybor in
     # Tutaj umieść komendy dla opcji drugiej
       apt-get update
       apt-get -y upgrade
-      apt-get install -y slim
+      #apt-get install -y slim
       apt-get install -y lxqt
       #apt-get install -y task-lxqt-desktop
       reboot
