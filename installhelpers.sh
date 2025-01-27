@@ -51,12 +51,7 @@ case "$wybor" in
         echo "Wybrano opcję czwartą (Instalacja BiglyBT)"
         apt-get update
         apt-get -y install default-jre
-        # Upewnij się, że użytkownik "nas" istnieje i ma odpowiednie uprawnienia
-        if ! id -u nas >/dev/null 2>&1; then
-            echo "Użytkownik 'nas' nie istnieje. Utwórz go najpierw."
-            exit 1
-        fi
-        sudo -u nas apt-get install -y biglybt
+        apt-get install -y biglybt
 
         cat << EOF > /etc/systemd/system/biglybt.service
 [Unit]
