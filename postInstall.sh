@@ -56,6 +56,7 @@ case $wybor in
       apt-get clean -y
       apt-get autoclean -y
       apt-get autoremove --purge -y
+      reboot
     ;;
   4)
     echo "Wybrano opcję czwartą"
