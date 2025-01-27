@@ -65,6 +65,7 @@ case $wybor in
     # Tutaj umieść komendy dla opcji trzeciej
       wget https://files.biglybt.com/installer/BiglyBT_Installer.sh
       chmod +x BiglyBT_Installer.sh
+      ./BiglyBT_Installer.sh
       rm BiglyBT_Installer.sh
     ;;
   5)
