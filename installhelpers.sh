@@ -56,14 +56,18 @@ case "$wybor" in
         sudo -u nas ./BiglyBT_Installer.sh
         cat << EOF > /etc/systemd/system/biglybt.service
 [Unit]
-Description=BiglyBT service
-After=network.target
+Description=BiglyBTd (BiglyBT as a system service)
+After=network-online.target
 
 [Service]
+User=nas
 Type=simple
-User=nas # Dodano, aby usługa działała jako użytkownik nas
-ExecStart=/home/nas/biglybt/biglybt
 Restart=always
+StateDirectory=biglybt
+
+ExecStart=/home/nas/biglybt/biglybt --ui="telnet"
+ExecStop=/home/nas/biglybt/biglybt --shutdown
+SuccessExitStatus=143
 
 [Install]
 WantedBy=multi-user.target
