@@ -25,6 +25,16 @@ case "$wybor" in
         apt-get update
         apt-get -y upgrade
         apt-get install -y curl sudo wget qemu-guest-agent nano
+        apt-get install -y nfs-common
+        mkdir /mnt/nfs
+        mkdir /mnt/nfs/download
+        mkdir /mnt/nfs/data
+        mount -t nfs -o vers=4.2,rw 192.168.100.102:/mnt/zf1/data /mnt/nfs/data
+        mount -t nfs -o vers=4.2,rw 192.168.100.102:/mnt/zf1/download /mnt/nfs/download
+        cat << EOF > /etc/fstab
+192.168.100.102:/mnt/zf1/data /mnt/nfs/data nfs vers=4.2,rw 0 0
+192.168.100.102:/mnt/zf1/download /mnt/nfs/download nfs vers=4.2,rw 0 0
+EOF
         apt-get clean
         apt-get autoclean
         apt-get autoremove --purge -y
