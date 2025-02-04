@@ -3,18 +3,19 @@
 # Wyświetlenie menu z opcjami
 echo "Wybierz jedną z opcji:"
 echo "1. Post install - zainstalowanie potrzebnych pakietów"
-echo "2. Instalacja Desktop GUI (LXQt)"
-echo "3. Odinstaluj Desktop GUI (LXQt)"
-echo "4. Instalacja BiglyBT"
-echo "5. Instalacja Desktop (IceWM)"
+echo "2. Montowanie NFS"
+echo "3. Instalacja Desktop GUI (LXQt)"
+echo "4. Odinstaluj Desktop GUI (LXQt)"
+echo "5. Instalacja BiglyBT"
+echo "6. Instalacja Desktop (IceWM)"
 echo "exit"
 
 # Odczytanie wyboru użytkownika
 read -p "Twój wybór: " wybor
 
 # Sprawdzenie poprawności wyboru
-while [[ ! "$wybor" =~ ^[1-5]$ ]] && [[ "$wybor" != "exit" ]]; do
-    echo "Niepoprawny wybór. Wybierz liczbę od 1 do 5 lub exit."
+while [[ ! "$wybor" =~ ^[1-6]$ ]] && [[ "$wybor" != "exit" ]]; do
+    echo "Niepoprawny wybór. Wybierz liczbę od 1 do 6 lub exit."
     read -p "Twój wybór: " wybor
 done
 
@@ -25,6 +26,15 @@ case "$wybor" in
         apt-get update
         apt-get -y upgrade
         apt-get install -y curl sudo wget qemu-guest-agent nano
+        apt-get clean
+        apt-get autoclean
+        apt-get autoremove --purge -y
+        fstrim -av
+        ;;
+    2)
+        echo "Wybrano opcję drugą (montowanie NFS)"
+        apt-get update
+        apt-get -y upgrade
         apt-get install -y nfs-common
         mkdir /mnt/nfs
         mkdir /mnt/nfs/download
@@ -35,20 +45,16 @@ case "$wybor" in
 192.168.100.102:/mnt/zf1/data /mnt/nfs/data nfs vers=4.2,rw 0 0
 192.168.100.102:/mnt/zf1/download /mnt/nfs/download nfs vers=4.2,rw 0 0
 EOF
-        apt-get clean
-        apt-get autoclean
-        apt-get autoremove --purge -y
-        fstrim -av
         ;;
-    2)
-        echo "Wybrano opcję drugą (Instalacja Desktop GUI - LXQt)"
+    3)
+        echo "Wybrano opcję trzecią (Instalacja Desktop GUI - LXQt)"
         apt-get update
         apt-get -y upgrade
         apt-get install -y lxqt sddm
         reboot
         ;;
-    3)
-        echo "Wybrano opcję trzecią (Odinstaluj Desktop GUI - LXQt)"
+    4)
+        echo "Wybrano opcję czwartą (Odinstaluj Desktop GUI - LXQt)"
         apt-get update
         apt-get -y upgrade
         apt-get remove --purge -y lxqt sddm
@@ -57,8 +63,8 @@ EOF
         apt-get autoremove --purge -y
         reboot
         ;;
-    4)
-        echo "Wybrano opcję czwartą (Instalacja BiglyBT)"
+    5)
+        echo "Wybrano opcję piątą (Instalacja BiglyBT)"
         apt-get update
         apt-get -y upgrade
         apt-get -y install default-jre
@@ -87,8 +93,8 @@ EOF
         sudo systemctl enable biglybt
         sudo systemctl start biglybt
         ;;
-    5)
-        echo "Wybrano opcję piątą (Instalacja Cloudflare WARP)"
+    6)
+        echo "Wybrano opcję szustą (Instalacja Cloudflare WARP)"
         apt-get update
         apt-get -y upgrade
         curl https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor --output /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg
