@@ -1,0 +1,5 @@
+# Test zapisu
+sudo fio --name=write_test --ioengine=libaio --direct=1 --filename=/mnt/tmp/download/testfile --bs=1M --size=100G --runtime=60 --numjobs=1 --rw=write --group_reporting
+
+# Test odczytu
+sudo fio --name=read_test --ioengine=libaio --direct=1 --filename=/mnt/tmp/download/testfile --bs=1M --size=100G --runtime=60 --numjobs=1 --rw=read --group_reporting
