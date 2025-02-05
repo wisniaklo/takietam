@@ -41,9 +41,9 @@ case "$wybor" in
         mkdir /mnt/nfs/data
         mount -t nfs -o vers=4.2,rw 192.168.100.101:/mnt/zf1/data /mnt/nfs/data
         mount -t nfs -o vers=4.2,rw 192.168.100.101:/mnt/zf1/download /mnt/nfs/download
-        cat << EOF > /etc/fstab
-192.168.100.102:/mnt/zf1/data /mnt/nfs/data nfs vers=4.2,rw 0 0
-192.168.100.102:/mnt/zf1/download /mnt/nfs/download nfs vers=4.2,rw 0 0
+        cat << EOF >> /etc/fstab
+192.168.100.101:/mnt/zf1/data /mnt/nfs/data nfs vers=4.2,rw 0 0
+192.168.100.101:/mnt/zf1/download /mnt/nfs/download nfs vers=4.2,rw 0 0
 EOF
         ;;
     3)
