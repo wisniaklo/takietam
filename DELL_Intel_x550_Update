@@ -1,0 +1,8 @@
+mkdir /root/dell
+mkdir /root/dell/firm
+cd /root/dell
+wget "plik bin"
+./Network_Firmware_WVM0R_LN_23.0.8_A00_01.BIN --extract /root/dell/firm
+cd /root/dell/firm
+chmod 755 nvmupdate64e
+./nvmupdate64e
