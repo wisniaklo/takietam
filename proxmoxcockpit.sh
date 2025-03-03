@@ -21,8 +21,7 @@ else
 fi
 
 #Instalacja Poolsman for Cockpit
-echo "deb [arch=all] https://download.poolsman.com/repository/debian/ stable main" | \ 
-tee /etc/apt/sources.list.d/poolsman.list > /dev/null
+echo "deb [arch=all] https://download.poolsman.com/repository/debian/ stable main" | \ tee /etc/apt/sources.list.d/poolsman.list > /dev/null
 wget -qO- https://download.poolsman.com/keys/poolsman.gpg | \
 tee /etc/apt/trusted.gpg.d/poolsman.gpg > /dev/null
 apt-get -y update
