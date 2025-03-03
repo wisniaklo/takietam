@@ -1,1 +1,17 @@
+vim /etc/config/network
 
+# przykład
+config interface 'lan'
+        option type 'bridge'
+        option ifname 'eth0'
+        option proto 'static'
+        option netmask '255.255.255.0'
+        option ipaddr '192.168.1.*'
+
+vim /etc/config/firewall
+
+config rule
+        option src wan
+        option dest_port 80
+        option proto tcp
+        option target ACCEPT
