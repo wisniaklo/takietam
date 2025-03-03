@@ -21,20 +21,15 @@ else
 fi
 
 #Instalacja Poolsman for Cockpit
-echo "deb [arch=all] https://download.poolsman.com/repository/debian/ stable main" | \ tee /etc/apt/sources.list.d/poolsman.list > /dev/null
+echo "deb [arch=all] https://download.poolsman.com/repository/debian/ stable main" | tee /etc/apt/sources.list.d/poolsman.list > /dev/null
 wget -qO- https://download.poolsman.com/keys/poolsman.gpg | \
 tee /etc/apt/trusted.gpg.d/poolsman.gpg > /dev/null
 apt-get -y update
 apt-get -y install poolsman
 
-#Instalacja Identities for Cockpit
+#Instalacja Identities, file-sharinf, navigator for Cockpit
 curl -sSL https://repo.45drives.com/setup | sudo bash
-apt-get update
-apt-get install cockpit-identities
-
-#Instalacja Identities for Cockpit
-curl -sSL https://repo.45drives.com/setup | sudo bash
-apt-get update
-apt-get install cockpit-identities
-apt-get install cockpit-file-sharing
-apt-get install cockpit-navigator
+apt-get -y update
+apt-get install -y cockpit-identities
+apt-get install -y cockpit-file-sharing
+apt-get install -y cockpit-navigator
