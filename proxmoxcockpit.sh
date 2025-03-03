@@ -7,7 +7,7 @@ apt-get -y upgrade
 apt-get -y install cockpit
 systemctl enable cockpit.socket
 
-file="/etc/cockpit/disallowed-users/"
+file="/etc/cockpit/disallowed-users"
 
 if [[ -f "$file" ]]; then
   sed -i 's/^root$/#root/' "$file"
