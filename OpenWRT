@@ -1,4 +1,15 @@
-# w pliku konfiguracyjnym VM dodać boot orde na scsi0
+#Przygotowanie obrazu dysku OpenWRT
+
+https://downloads.openwrt.org/
+wget https://downloads.openwrt.org/releases/24.10.0/targets/x86/64/openwrt-24.10.0-x86-64-generic-ext4-combined-efi.img.gz
+gzip -d openwrt-24.10.0-x86-64-generic-ext4-combined-efi.img.gz
+# zmiana wielkości obrazu dysku np 1GB
+qemu-img resize -f raw openwrt-24.10.0-x86-64-generic-ext4-combined-efi.img 1G
+
+# podpiecie obrazu dysku OpenWRT do maszyny VM jako dysk z OS
+qm importdisk 100 openwrt-24.10.0-x86-64-generic-ext4-combined-efi.img local-zfs
+
+# w pliku konfiguracyjnym VM dodać boot orde na scsi0 
 
 nano /etc/pve/qemu-server/100.conf
 
@@ -23,3 +34,16 @@ config rule
         option dest_port 80
         option proto tcp
         option target ACCEPT
+
+# Instalacja dodatkowych pakietów OpenWRT z poziomu web gui "software" 
+# Na poczatek update informacje o pakietach
+
+qemu-ga
+pciutils
+kmod-ixgbe
+kmod-ixgbevf
+kmod-r8125-rss
+#opcjonalnie sterownika dla karty wifi
+iwlwifi-firmware-ax210
+
+
