@@ -40,6 +40,7 @@ config rule
 
 qemu-ga
 pciutils
+kmod-bonding
 kmod-ixgbe
 kmod-ixgbevf
 kmod-r8125-rss
