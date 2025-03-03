@@ -1,3 +1,8 @@
+# w pliku konfiguracyjnym VM dodać boot orde na scsi0
+
+nano /etc/pve/qemu-server/100.conf
+
+# Konfiguracja interfejsów 
 vim /etc/config/network
 
 # przykład
@@ -8,6 +13,9 @@ config interface 'lan'
         option netmask '255.255.255.0'
         option ipaddr '192.168.1.*'
 
+
+
+# Dostęp do web interfejsu z poziomu WAN (edycja pliku firewall)
 vim /etc/config/firewall
 
 config rule
