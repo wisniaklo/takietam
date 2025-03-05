@@ -7,7 +7,7 @@ echo "2. Montowanie NFS"
 echo "3. Instalacja Desktop GUI (LXQt)"
 echo "4. Odinstaluj Desktop GUI (LXQt)"
 echo "5. Instalacja BiglyBT"
-echo "6. Instalacja Desktop (IceWM)"
+echo "6. Instalacja Cloudflare WARP"
 echo "exit"
 
 # Odczytanie wyboru użytkownika
