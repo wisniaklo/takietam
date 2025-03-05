@@ -71,10 +71,8 @@ EOF
         wget https://files.biglybt.com/installer/BiglyBT_Installer.sh
         chmod +x BiglyBT_Installer.sh
 
-        #sudo -u nas ./BiglyBT_Installer.sh
-        sudo ./BiglyBT_Installer.sh
-        #sudo -u nas cat << EOF > /etc/systemd/system/biglybt.service
-        sudo cat << EOF > /etc/systemd/system/biglybt.service
+        sudo -u nas ./BiglyBT_Installer.sh
+        sudo -u nas cat << EOF > /etc/systemd/system/biglybt.service
 [Unit]
 Description=BiglyBTd (BiglyBT as a system service)
 After=network-online.target
